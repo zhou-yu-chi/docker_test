@@ -1,0 +1,2 @@
+(base) PS C:\WINDOWS\system32> docker volume create --driver local --opt type=nfs --opt o=addr=192.168.0.20,rw,nfsvers=4 --opt device=:/volume1/P600-照片資料 nfs_photos
+docker run --gpus all -it -v C:\Users\5-005-072\Desktop\Florence:/workspace -v nfs_photos:/dataset florence-env bash
