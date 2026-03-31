@@ -1,0 +1,432 @@
+Requirement already satisfied: transformers in /opt/conda/lib/python3.10/site-packages (4.38.2)
+Requirement already satisfied: peft in /opt/conda/lib/python3.10/site-packages (0.8.2)
+Requirement already satisfied: accelerate in /opt/conda/lib/python3.10/site-packages (0.27.2)
+Collecting datasets
+Downloading datasets-4.8.4-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: pillow in /opt/conda/lib/python3.10/site-packages (12.1.1)
+Requirement already satisfied: filelock in /opt/conda/lib/python3.10/site-packages (from transformers) (3.25.2)
+Requirement already satisfied: huggingface-hub<1.0,>=0.19.3 in /opt/conda/lib/python3.10/site-packages (from transformers) (0.36.2)
+Requirement already satisfied: numpy>=1.17 in /opt/conda/lib/python3.10/site-packages (from transformers) (1.26.4)
+Requirement already satisfied: packaging>=20.0 in /opt/conda/lib/python3.10/site-packages (from transformers) (23.1)
+Requirement already satisfied: pyyaml>=5.1 in /opt/conda/lib/python3.10/site-packages (from transformers) (6.0.3)
+Requirement already satisfied: regex!=2019.12.17 in /opt/conda/lib/python3.10/site-packages (from transformers) (2026.2.28)
+Requirement already satisfied: requests in /opt/conda/lib/python3.10/site-packages (from transformers) (2.33.0)
+Requirement already satisfied: tokenizers<0.19,>=0.14 in /opt/conda/lib/python3.10/site-packages (from transformers) (0.15.2)
+Requirement already satisfied: safetensors>=0.4.1 in /opt/conda/lib/python3.10/site-packages (from transformers) (0.7.0)
+Requirement already satisfied: tqdm>=4.27 in /opt/conda/lib/python3.10/site-packages (from transformers) (4.67.3)
+Requirement already satisfied: psutil in /opt/conda/lib/python3.10/site-packages (from peft) (7.2.2)
+Requirement already satisfied: torch>=1.13.0 in /opt/conda/lib/python3.10/site-packages (from peft) (2.7.1+cu118)
+Collecting pyarrow>=21.0.0 (from datasets)
+Downloading pyarrow-23.0.1-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (3.1 kB)
+Collecting dill<0.4.2,>=0.3.0 (from datasets)
+Downloading dill-0.4.1-py3-none-any.whl.metadata (10 kB)
+Collecting pandas (from datasets)
+Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.2/91.2 kB 5.9 MB/s eta 0:00:00
+Requirement already satisfied: httpx<1.0.0 in /opt/conda/lib/python3.10/site-packages (from datasets) (0.28.1)
+Collecting xxhash (from datasets)
+Downloading xxhash-3.6.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+Collecting multiprocess<0.70.20 (from datasets)
+Downloading multiprocess-0.70.19-py310-none-any.whl.metadata (7.5 kB)
+Requirement already satisfied: fsspec<=2026.2.0,>=2023.1.0 in /opt/conda/lib/python3.10/site-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets) (2026.2.0)
+Collecting aiohttp!=4.0.0a0,!=4.0.0a1 (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets)
+Downloading aiohttp-3.13.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+Requirement already satisfied: anyio in /opt/conda/lib/python3.10/site-packages (from httpx<1.0.0->datasets) (4.13.0)
+Requirement already satisfied: certifi in /opt/conda/lib/python3.10/site-packages (from httpx<1.0.0->datasets) (2026.2.25)
+Requirement already satisfied: httpcore==1.* in /opt/conda/lib/python3.10/site-packages (from httpx<1.0.0->datasets) (1.0.9)
+Requirement already satisfied: idna in /opt/conda/lib/python3.10/site-packages (from httpx<1.0.0->datasets) (3.11)
+Requirement already satisfied: h11>=0.16 in /opt/conda/lib/python3.10/site-packages (from httpcore==1.*->httpx<1.0.0->datasets) (0.16.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.3 in /opt/conda/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.19.3->transformers) (1.4.2)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /opt/conda/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.19.3->transformers) (4.15.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in /opt/conda/lib/python3.10/site-packages (from requests->transformers) (3.4.6)
+Requirement already satisfied: urllib3<3,>=1.26 in /opt/conda/lib/python3.10/site-packages (from requests->transformers) (2.6.3)
+Requirement already satisfied: sympy>=1.13.3 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (1.14.0)
+Requirement already satisfied: networkx in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (3.2.1)
+Requirement already satisfied: jinja2 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (3.1.6)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.8.89 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.8.89)
+Requirement already satisfied: nvidia-cuda-runtime-cu11==11.8.89 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.8.89)
+Requirement already satisfied: nvidia-cuda-cupti-cu11==11.8.87 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.8.87)
+Requirement already satisfied: nvidia-cudnn-cu11==9.1.0.70 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu11==11.11.3.6 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.11.3.6)
+Requirement already satisfied: nvidia-cufft-cu11==10.9.0.58 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (10.9.0.58)
+Requirement already satisfied: nvidia-curand-cu11==10.3.0.86 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (10.3.0.86)
+Requirement already satisfied: nvidia-cusolver-cu11==11.4.1.48 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.4.1.48)
+Requirement already satisfied: nvidia-cusparse-cu11==11.7.5.86 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.7.5.86)
+Requirement already satisfied: nvidia-nccl-cu11==2.21.5 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu11==11.8.86 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.8.86)
+Requirement already satisfied: triton==3.3.1 in /opt/conda/lib/python3.10/site-packages (from torch>=1.13.0->peft) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in /opt/conda/lib/python3.10/site-packages (from triton==3.3.1->torch>=1.13.0->peft) (68.2.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in /opt/conda/lib/python3.10/site-packages (from pandas->datasets) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in /opt/conda/lib/python3.10/site-packages (from pandas->datasets) (2023.3.post1)
+Requirement already satisfied: tzdata>=2022.7 in /opt/conda/lib/python3.10/site-packages (from pandas->datasets) (2025.3)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets)
+Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets)
+Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets)
+Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Requirement already satisfied: attrs>=17.3.0 in /opt/conda/lib/python3.10/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets) (23.1.0)
+Collecting frozenlist>=1.1.1 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets)
+Downloading frozenlist-1.8.0-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets)
+Downloading multidict-6.7.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+Collecting propcache>=0.2.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets)
+Downloading propcache-0.4.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets)
+Downloading yarl-1.23.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.6/79.6 kB 3.7 MB/s eta 0:00:00
+Requirement already satisfied: six>=1.5 in /opt/conda/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.16.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /opt/conda/lib/python3.10/site-packages (from sympy>=1.13.3->torch>=1.13.0->peft) (1.3.0)
+Requirement already satisfied: exceptiongroup>=1.0.2 in /opt/conda/lib/python3.10/site-packages (from anyio->httpx<1.0.0->datasets) (1.2.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/lib/python3.10/site-packages (from jinja2->torch>=1.13.0->peft) (3.0.2)
+Downloading datasets-4.8.4-py3-none-any.whl (526 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 527.0/527.0 kB 15.0 MB/s eta 0:00:00
+Downloading dill-0.4.1-py3-none-any.whl (120 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 120.0/120.0 kB 65.7 MB/s eta 0:00:00
+Downloading multiprocess-0.70.19-py310-none-any.whl (134 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 73.7 MB/s eta 0:00:00
+Downloading pyarrow-23.0.1-cp310-cp310-manylinux_2_28_x86_64.whl (47.6 MB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.6/47.6 MB 83.4 MB/s eta 0:00:00
+Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 161.6 MB/s eta 0:00:00
+Downloading xxhash-3.6.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (193 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 193.2/193.2 kB 89.7 MB/s eta 0:00:00
+Downloading aiohttp-3.13.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 177.7 MB/s eta 0:00:00
+Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Downloading frozenlist-1.8.0-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (219 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 219.5/219.5 kB 102.1 MB/s eta 0:00:00
+Downloading multidict-6.7.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (243 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 243.3/243.3 kB 106.6 MB/s eta 0:00:00
+Downloading propcache-0.4.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (196 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 196.9/196.9 kB 92.9 MB/s eta 0:00:00
+Downloading yarl-1.23.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (102 kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 102.8/102.8 kB 61.4 MB/s eta 0:00:00
+Installing collected packages: xxhash, pyarrow, propcache, multidict, frozenlist, dill, async-timeout, aiohappyeyeballs, yarl, pandas, multiprocess, aiosignal, aiohttp, datasets
+Successfully installed aiohappyeyeballs-2.6.1 aiohttp-3.13.4 aiosignal-1.4.0 async-timeout-5.0.1 datasets-4.8.4 dill-0.4.1 frozenlist-1.8.0 multidict-6.7.1 multiprocess-0.70.19 pandas-2.3.3 propcache-0.4.1 pyarrow-23.0.1 xxhash-3.6.0 yarl-1.23.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+W0330 08:13:08.648000 66 site-packages/torch/distributed/run.py:766]
+W0330 08:13:08.648000 66 site-packages/torch/distributed/run.py:766] *****************************************
+W0330 08:13:08.648000 66 site-packages/torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed.
+W0330 08:13:08.648000 66 site-packages/torch/distributed/run.py:766] *****************************************
+⏳ 正在載入 Processor 與 基礎模型...
+⏳ 正在載入 Processor 與 基礎模型...
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+⏳ 正在載入 Processor 與 基礎模型...
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+⏳ 正在載入 Processor 與 基礎模型...
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+⏳ 正在載入 Processor 與 基礎模型...
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+⏳ 正在載入 Processor 與 基礎模型...
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+⏳ 正在載入 Processor 與 基礎模型...
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+⏳ 正在載入 Processor 與 基礎模型...
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- processing_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- processing_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- processing_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- processing_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- processing_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- processing_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- processing_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- processing_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- configuration_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- configuration_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- configuration_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- configuration_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- configuration_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- configuration_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- configuration_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- configuration_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- modeling_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- modeling_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- modeling_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- modeling_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- modeling_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- modeling_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- modeling_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+A new version of the following files was downloaded from https://huggingface.co/microsoft/Florence-2-base-ft:
+- modeling_florence2.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+🛠️ 正在套用 LoRA 配置...
+🛠️ 正在套用 LoRA 配置...
+🛠️ 正在套用 LoRA 配置...
+trainable params: 442,368 || all params: 231,856,384 || trainable%: 0.19079397011556948
+📚 正在準備資料集...
+trainable params: 442,368 || all params: 231,856,384 || trainable%: 0.19079397011556948
+📚 正在準備資料集...
+trainable params: 442,368 || all params: 231,856,384 || trainable%: 0.19079397011556948
+📚 正在準備資料集...
+🛠️ 正在套用 LoRA 配置...
+trainable params: 442,368 || all params: 231,856,384 || trainable%: 0.19079397011556948
+📚 正在準備資料集...
+🛠️ 正在套用 LoRA 配置...
+/opt/conda/lib/python3.10/site-packages/accelerate/accelerator.py:450: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+🚀 開始煉丹！(開始訓練...)
+🛠️ 正在套用 LoRA 配置...
+trainable params: 442,368 || all params: 231,856,384 || trainable%: 0.19079397011556948
+📚 正在準備資料集...
+/opt/conda/lib/python3.10/site-packages/accelerate/accelerator.py:450: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+🚀 開始煉丹！(開始訓練...)
+🛠️ 正在套用 LoRA 配置...
+/opt/conda/lib/python3.10/site-packages/accelerate/accelerator.py:450: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+🚀 開始煉丹！(開始訓練...)
+trainable params: 442,368 || all params: 231,856,384 || trainable%: 0.19079397011556948
+📚 正在準備資料集...
+trainable params: 442,368 || all params: 231,856,384 || trainable%: 0.19079397011556948
+📚 正在準備資料集...
+🛠️ 正在套用 LoRA 配置...
+trainable params: 442,368 || all params: 231,856,384 || trainable%: 0.19079397011556948
+📚 正在準備資料集...
+/opt/conda/lib/python3.10/site-packages/accelerate/accelerator.py:450: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+🚀 開始煉丹！(開始訓練...)
+/opt/conda/lib/python3.10/site-packages/accelerate/accelerator.py:450: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+🚀 開始煉丹！(開始訓練...)
+/opt/conda/lib/python3.10/site-packages/accelerate/accelerator.py:450: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+🚀 開始煉丹！(開始訓練...)
+/opt/conda/lib/python3.10/site-packages/accelerate/accelerator.py:450: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+🚀 開始煉丹！(開始訓練...)
+/opt/conda/lib/python3.10/site-packages/accelerate/accelerator.py:450: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+🚀 開始煉丹！(開始訓練...)
+{'loss': 1.7922, 'grad_norm': 0.4879836142063141, 'learning_rate': 0.0004999242424242425, 'epoch': 0.03}
+{'loss': 1.3654, 'grad_norm': 0.40808653831481934, 'learning_rate': 0.0004998484848484849, 'epoch': 0.06}
+{'loss': 1.2597, 'grad_norm': 0.36650240421295166, 'learning_rate': 0.0004997727272727273, 'epoch': 0.09}
+{'loss': 1.1837, 'grad_norm': 0.35452011227607727, 'learning_rate': 0.0004996969696969697, 'epoch': 0.12}
+{'loss': 1.1527, 'grad_norm': 0.3876405656337738, 'learning_rate': 0.0004996212121212121, 'epoch': 0.15}
+{'loss': 1.1533, 'grad_norm': 0.6928160786628723, 'learning_rate': 0.0004995454545454546, 'epoch': 0.18}
+{'loss': 1.1477, 'grad_norm': 0.47072848677635193, 'learning_rate': 0.000499469696969697, 'epoch': 0.21}
+{'loss': 1.1219, 'grad_norm': 0.3748932182788849, 'learning_rate': 0.0004993939393939394, 'epoch': 0.24}
+{'loss': 1.1155, 'grad_norm': 0.5316798090934753, 'learning_rate': 0.0004993181818181818, 'epoch': 0.27}
+{'loss': 1.1146, 'grad_norm': 0.49226561188697815, 'learning_rate': 0.0004992424242424243, 'epoch': 0.3}
+0%| | 0/66000 [00:00<?, ?it/s] 0%| | 1/66000 [00:01<21:04:12, 1.15s/it] 0%| | 2/66000 [00:01<15:56:05, 1.15it/s] 0%| | 3/66000 [00:02<14:56:48, 1.23it/s] 0%| | 4/66000 [00:03<13:37:50, 1.34it/s] 0%| | 5/66000 [00:03<13:03:39, 1.40it/s] 0%| | 6/66000 [00:04<12:17:06, 1.49it/s] 0%| | 7/66000 [00:05<12:05:03, 1.52it/s] 0%| | 8/66000 [00:05<12:13:33, 1.50it/s] 0%| | 9/66000 [00:06<12:47:12, 1.43it/s] 0%| | 10/66000 [00:07<12:10:20, 1.51it/s] 0%| | 10/66000 [00:07<12:10:20, 1.51it/s] 0%| | 11/66000 [00:07<11:52:47, 1.54it/s] 0%| | 12/66000 [00:08<11:59:19, 1.53it/s] 0%| | 13/66000 [00:09<11:53:59, 1.54it/s] 0%| | 14/66000 [00:09<12:15:20, 1.50it/s] 0%| | 15/66000 [00:10<12:20:49, 1.48it/s] 0%| | 16/66000 [00:11<12:17:55, 1.49it/s] 0%| | 17/66000 [00:11<12:35:49, 1.45it/s] 0%| | 18/66000 [00:12<12:00:39, 1.53it/s] 0%| | 19/66000 [00:13<11:52:05, 1.54it/s] 0%| | 20/66000 [00:13<11:53:22, 1.54it/s] 0%| | 20/66000 [00:13<11:53:22, 1.54it/s] 0%| | 21/66000 [00:14<12:11:08, 1.50it/s] 0%| | 22/66000 [00:15<12:03:56, 1.52it/s] 0%| | 23/66000 [00:15<11:54:28, 1.54it/s] 0%| | 24/66000 [00:16<11:35:02, 1.58it/s] 0%| | 25/66000 [00:16<11:34:18, 1.58it/s] 0%| | 26/66000 [00:17<12:29:56, 1.47it/s] 0%| | 27/66000 [00:18<12:40:04, 1.45it/s] 0%| | 28/66000 [00:19<12:49:02, 1.43it/s] 0%| | 29/66000 [00:19<12:38:35, 1.45it/s] 0%| | 30/66000 [00:20<12:54:20, 1.42it/s] 0%| | 30/66000 [00:20<12:54:20, 1.42it/s] 0%| | 31/66000 [00:21<12:50:51, 1.43it/s] 0%| | 32/66000 [00:21<12:10:55, 1.50it/s] 0%| | 33/66000 [00:22<12:54:26, 1.42it/s] 0%| | 34/66000 [00:23<12:20:11, 1.49it/s] 0%| | 35/66000 [00:23<12:10:18, 1.51it/s] 0%| | 36/66000 [00:24<12:16:47, 1.49it/s] 0%| | 37/66000 [00:25<12:48:09, 1.43it/s] 0%| | 38/66000 [00:25<12:24:12, 1.48it/s] 0%| | 39/66000 [00:26<12:48:57, 1.43it/s] 0%| | 40/66000 [00:27<12:51:02, 1.43it/s] 0%| | 40/66000 [00:27<12:51:02, 1.43it/s] 0%| | 41/66000 [00:28<12:42:23, 1.44it/s] 0%| | 42/66000 [00:28<12:45:41, 1.44it/s] 0%| | 43/66000 [00:29<12:58:42, 1.41it/s] 0%| | 44/66000 [00:30<12:57:02, 1.41it/s] 0%| | 45/66000 [00:30<12:41:46, 1.44it/s] 0%| | 46/66000 [00:31<12:54:20, 1.42it/s] 0%| | 47/66000 [00:32<12:10:35, 1.50it/s] 0%| | 48/66000 [00:32<12:14:31, 1.50it/s] 0%| | 49/66000 [00:33<12:30:12, 1.47it/s] 0%| | 50/66000 [00:34<12:36:16, 1.45it/s] 0%| | 50/66000 [00:34<12:36:16, 1.45it/s] 0%| | 51/66000 [00:34<12:42:07, 1.44it/s] 0%| | 52/66000 [00:35<12:34:24, 1.46it/s] 0%| | 53/66000 [00:36<12:24:13, 1.48it/s] 0%| | 54/66000 [00:36<12:25:48, 1.47it/s] 0%| | 55/66000 [00:37<11:58:58, 1.53it/s] 0%| | 56/66000 [00:38<11:31:50, 1.59it/s] 0%| | 57/66000 [00:38<11:40:43, 1.57it/s] 0%| | 58/66000 [00:39<11:35:11, 1.58it/s] 0%| | 59/66000 [00:40<11:40:53, 1.57it/s] 0%| | 60/66000 [00:40<11:53:57, 1.54it/s] 0%| | 60/66000 [00:40<11:53:57, 1.54it/s] 0%| | 61/66000 [00:41<11:52:57, 1.54it/s] 0%| | 62/66000 [00:42<12:15:14, 1.49it/s] 0%| | 63/66000 [00:42<11:50:56, 1.55it/s] 0%| | 64/66000 [00:43<12:32:10, 1.46it/s] 0%| | 65/66000 [00:44<12:20:24, 1.48it/s] 0%| | 66/66000 [00:44<12:16:03, 1.49it/s] 0%| | 67/66000 [00:45<12:16:50, 1.49it/s] 0%| | 68/66000 [00:46<11:52:35, 1.54it/s] 0%| | 69/66000 [00:46<11:44:15, 1.56it/s] 0%| | 70/66000 [00:47<11:45:51, 1.56it/s] 0%| | 70/66000 [00:47<11:45:51, 1.56it/s] 0%| | 71/66000 [00:48<12:05:53, 1.51it/s] 0%| | 72/66000 [00:48<12:10:25, 1.50it/s] 0%| | 73/66000 [00:49<12:27:03, 1.47it/s] 0%| | 74/66000 [00:50<12:27:52, 1.47it/s] 0%| | 75/66000 [00:50<12:38:18, 1.45it/s] 0%| | 76/66000 [00:51<12:19:37, 1.49it/s] 0%| | 77/66000 [00:52<12:12:54, 1.50it/s] 0%| | 78/66000 [00:52<12:10:34, 1.50it/s] 0%| | 79/66000 [00:53<12:21:26, 1.48it/s] 0%| | 80/66000 [00:54<12:13:55, 1.50it/s] 0%| | 80/66000 [00:54<12:13:55, 1.50it/s] 0%| | 81/66000 [00:54<12:32:50, 1.46it/s] 0%| | 82/66000 [00:55<12:35:46, 1.45it/s] 0%| | 83/66000 [00:56<12:05:24, 1.51it/s] 0%| | 84/66000 [00:56<11:56:34, 1.53it/s] 0%| | 85/66000 [00:57<11:56:03, 1.53it/s] 0%| | 86/66000 [00:58<11:49:57, 1.55it/s] 0%| | 87/66000 [00:58<12:13:45, 1.50it/s] 0%| | 88/66000 [00:59<12:02:15, 1.52it/s] 0%| | 89/66000 [01:00<12:14:52, 1.49it/s] 0%| | 90/66000 [01:00<12:04:13, 1.52it/s] 0%| | 90/66000 [01:00<12:04:13, 1.52it/s] 0%| | 91/66000 [01:01<11:57:45, 1.53it/s] 0%| | 92/66000 [01:01<11:52:46, 1.54it/s] 0%| | 93/66000 [01:02<12:01:13, 1.52it/s] 0%| | 94/66000 [01:03<11:53:31, 1.54it/s] 0%| | 95/66000 [01:03<11:26:32, 1.60it/s] 0%| | 96/66000 [01:04<11:32:32, 1.59it/s] 0%| | 97/66000 [01:05<11:51:38, 1.54it/s] 0%| | 98/66000 [01:05<11:48:45, 1.55it/s] 0%| | 99/66000 [01:06<11:53:50, 1.54it/s] 0%| | 100/66000 [01:07<12:23:32, 1.48it/s] 0%| | 100/66000 [01:07<12:23:32, 1.48it/s]
+0%| | 0/42 [00:00<?, ?it/s][A
+5%|▍ | 2/42 [00:00<00:18, 2.14it/s][A
+7%|▋ | 3/42 [00:01<00:21, 1.80it/s][A
+10%|▉ | 4/42 [00:02<00:24, 1.53it/s][A
+12%|█▏ | 5/42 [00:03<00:27, 1.35it/s][A
+14%|█▍ | 6/42 [00:03<00:24, 1.48it/s][A
+17%|█▋ | 7/42 [00:04<00:25, 1.36it/s][A
+19%|█▉ | 8/42 [00:05<00:28, 1.20it/s][A
+21%|██▏ | 9/42 [00:06<00:25, 1.28it/s][A
+24%|██▍ | 10/42 [00:07<00:24, 1.29it/s][A
+26%|██▌ | 11/42 [00:07<00:23, 1.35it/s][A
+29%|██▊ | 12/42 [00:08<00:22, 1.35it/s][A
+31%|███ | 13/42 [00:09<00:23, 1.23it/s][A
+33%|███▎ | 14/42 [00:10<00:20, 1.35it/s][A
+36%|███▌ | 15/42 [00:11<00:21, 1.24it/s][A
+38%|███▊ | 16/42 [00:12<00:21, 1.21it/s][A
+40%|████ | 17/42 [00:12<00:18, 1.32it/s][A
+43%|████▎ | 18/42 [00:13<00:19, 1.24it/s][A
+45%|████▌ | 19/42 [00:14<00:17, 1.28it/s][A
+48%|████▊ | 20/42 [00:14<00:15, 1.41it/s][A
+50%|█████ | 21/42 [00:15<00:15, 1.32it/s][A
+52%|█████▏ | 22/42 [00:16<00:15, 1.27it/s][A
+55%|█████▍ | 23/42 [00:17<00:15, 1.26it/s][A
+57%|█████▋ | 24/42 [00:18<00:13, 1.30it/s][A
+60%|█████▉ | 25/42 [00:18<00:12, 1.38it/s][A
+62%|██████▏ | 26/42 [00:19<00:11, 1.37it/s][A
+64%|██████▍ | 27/42 [00:20<00:10, 1.38it/s][A
+67%|██████▋ | 28/42 [00:21<00:11, 1.23it/s][A
+69%|██████▉ | 29/42 [00:21<00:10, 1.22it/s][A
+71%|███████▏ | 30/42 [00:22<00:09, 1.26it/s][A
+74%|███████▍ | 31/42 [00:23<00:08, 1.29it/s][A
+76%|███████▌ | 32/42 [00:24<00:07, 1.29it/s][A
+79%|███████▊ | 33/42 [00:24<00:06, 1.31it/s][A
+81%|████████ | 34/42 [00:25<00:06, 1.29it/s][A
+83%|████████▎ | 35/42 [00:26<00:05, 1.30it/s][A
+86%|████████▌ | 36/42 [00:27<00:04, 1.26it/s][A
+88%|████████▊ | 37/42 [00:28<00:03, 1.31it/s][A
+90%|█████████ | 38/42 [00:28<00:03, 1.33it/s][A
+93%|█████████▎| 39/42 [00:29<00:02, 1.28it/s][A
+95%|█████████▌| 40/42 [00:30<00:01, 1.09it/s][A
+98%|█████████▊| 41/42 [00:31<00:00, 1.22it/s][A
+100%|██████████| 42/42 [00:31<00:00, 1.59it/s][A
+{'eval_loss': 5.52252721786499, 'eval_runtime': 32.8024, 'eval_samples_per_second': 80.543, 'eval_steps_per_second': 1.28, 'epoch': 0.3}
+[A 0%| | 100/66000 [01:40<12:23:32, 1.48it/s]
+100%|██████████| 42/42 [00:31<00:00, 1.59it/s][A
+[ACheckpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-100 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-100 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-100 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-100 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-100 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-100 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-100 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-100 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+{'loss': 1.0838, 'grad_norm': 0.5905619263648987, 'learning_rate': 0.0004991666666666666, 'epoch': 0.33}
+{'loss': 1.069, 'grad_norm': 0.424572616815567, 'learning_rate': 0.0004990909090909091, 'epoch': 0.36}
+{'loss': 1.0437, 'grad_norm': 0.530663013458252, 'learning_rate': 0.0004990151515151516, 'epoch': 0.39}
+{'loss': 1.0599, 'grad_norm': 0.5354813933372498, 'learning_rate': 0.000498939393939394, 'epoch': 0.42}
+{'loss': 1.0485, 'grad_norm': 0.495540052652359, 'learning_rate': 0.0004988636363636364, 'epoch': 0.45}
+{'loss': 1.0235, 'grad_norm': 0.41984689235687256, 'learning_rate': 0.0004987878787878788, 'epoch': 0.48}
+{'loss': 1.035, 'grad_norm': 0.5799388885498047, 'learning_rate': 0.0004987121212121212, 'epoch': 0.51}
+{'loss': 1.0126, 'grad_norm': 0.5897994637489319, 'learning_rate': 0.0004986363636363636, 'epoch': 0.54}
+{'loss': 1.0489, 'grad_norm': 0.59900963306427, 'learning_rate': 0.000498560606060606, 'epoch': 0.57}
+{'loss': 1.0364, 'grad_norm': 0.6486240029335022, 'learning_rate': 0.0004984848484848485, 'epoch': 0.61}
+0%| | 101/66000 [01:41<196:13:21, 10.72s/it] 0%| | 102/66000 [01:41<140:34:09, 7.68s/it] 0%| | 103/66000 [01:42<102:42:37, 5.61s/it] 0%| | 104/66000 [01:43<75:30:51, 4.13s/it] 0%| | 105/66000 [01:44<56:21:07, 3.08s/it] 0%| | 106/66000 [01:44<42:57:37, 2.35s/it] 0%| | 107/66000 [01:45<33:53:33, 1.85s/it] 0%| | 108/66000 [01:46<27:16:21, 1.49s/it] 0%| | 109/66000 [01:46<23:06:04, 1.26s/it] 0%| | 110/66000 [01:47<19:58:18, 1.09s/it] 0%| | 110/66000 [01:47<19:58:18, 1.09s/it] 0%| | 111/66000 [01:48<17:28:55, 1.05it/s] 0%| | 112/66000 [01:48<15:42:40, 1.16it/s] 0%| | 113/66000 [01:49<14:30:09, 1.26it/s] 0%| | 114/66000 [01:50<14:11:58, 1.29it/s] 0%| | 115/66000 [01:50<13:52:05, 1.32it/s] 0%| | 116/66000 [01:51<13:16:53, 1.38it/s] 0%| | 117/66000 [01:52<12:54:22, 1.42it/s] 0%| | 118/66000 [01:52<12:25:25, 1.47it/s] 0%| | 119/66000 [01:53<12:34:46, 1.45it/s] 0%| | 120/66000 [01:54<12:17:13, 1.49it/s] 0%| | 120/66000 [01:54<12:17:13, 1.49it/s] 0%| | 121/66000 [01:54<11:55:31, 1.53it/s] 0%| | 122/66000 [01:55<12:11:45, 1.50it/s] 0%| | 123/66000 [01:56<12:48:12, 1.43it/s] 0%| | 124/66000 [01:56<13:03:50, 1.40it/s] 0%| | 125/66000 [01:57<12:36:04, 1.45it/s] 0%| | 126/66000 [01:58<12:26:55, 1.47it/s] 0%| | 127/66000 [01:58<12:20:33, 1.48it/s] 0%| | 128/66000 [01:59<12:12:56, 1.50it/s] 0%| | 129/66000 [02:00<12:12:09, 1.50it/s] 0%| | 130/66000 [02:00<12:26:03, 1.47it/s] 0%| | 130/66000 [02:00<12:26:03, 1.47it/s] 0%| | 131/66000 [02:01<12:16:51, 1.49it/s] 0%| | 132/66000 [02:02<11:51:31, 1.54it/s] 0%| | 133/66000 [02:02<11:11:04, 1.64it/s] 0%| | 134/66000 [02:03<11:26:37, 1.60it/s] 0%| | 135/66000 [02:04<11:48:39, 1.55it/s] 0%| | 136/66000 [02:04<11:59:06, 1.53it/s] 0%| | 137/66000 [02:05<11:42:10, 1.56it/s] 0%| | 138/66000 [02:05<11:57:39, 1.53it/s] 0%| | 139/66000 [02:06<12:28:27, 1.47it/s] 0%| | 140/66000 [02:07<12:18:09, 1.49it/s] 0%| | 140/66000 [02:07<12:18:09, 1.49it/s] 0%| | 141/66000 [02:07<11:42:26, 1.56it/s] 0%| | 142/66000 [02:08<11:35:17, 1.58it/s] 0%| | 143/66000 [02:09<11:55:33, 1.53it/s] 0%| | 144/66000 [02:09<11:27:47, 1.60it/s] 0%| | 145/66000 [02:10<11:48:59, 1.55it/s] 0%| | 146/66000 [02:11<12:03:42, 1.52it/s] 0%| | 147/66000 [02:11<12:10:00, 1.50it/s] 0%| | 148/66000 [02:12<11:47:02, 1.55it/s] 0%| | 149/66000 [02:13<11:40:24, 1.57it/s] 0%| | 150/66000 [02:13<12:05:10, 1.51it/s] 0%| | 150/66000 [02:13<12:05:10, 1.51it/s] 0%| | 151/66000 [02:14<12:19:21, 1.48it/s] 0%| | 152/66000 [02:15<12:09:02, 1.51it/s] 0%| | 153/66000 [02:15<11:36:05, 1.58it/s] 0%| | 154/66000 [02:16<11:49:49, 1.55it/s] 0%| | 155/66000 [02:17<12:01:46, 1.52it/s] 0%| | 156/66000 [02:17<11:40:14, 1.57it/s] 0%| | 157/66000 [02:18<11:44:59, 1.56it/s] 0%| | 158/66000 [02:18<11:39:27, 1.57it/s] 0%| | 159/66000 [02:19<11:46:03, 1.55it/s] 0%| | 160/66000 [02:20<12:08:09, 1.51it/s] 0%| | 160/66000 [02:20<12:08:09, 1.51it/s] 0%| | 161/66000 [02:20<11:59:50, 1.52it/s] 0%| | 162/66000 [02:21<11:59:49, 1.52it/s] 0%| | 163/66000 [02:22<11:59:43, 1.52it/s] 0%| | 164/66000 [02:22<11:56:25, 1.53it/s] 0%| | 165/66000 [02:23<12:32:20, 1.46it/s] 0%| | 166/66000 [02:24<12:23:20, 1.48it/s] 0%| | 167/66000 [02:25<12:28:17, 1.47it/s] 0%| | 168/66000 [02:25<12:09:19, 1.50it/s] 0%| | 169/66000 [02:26<12:33:47, 1.46it/s] 0%| | 170/66000 [02:27<12:32:53, 1.46it/s] 0%| | 170/66000 [02:27<12:32:53, 1.46it/s] 0%| | 171/66000 [02:27<12:28:00, 1.47it/s] 0%| | 172/66000 [02:28<12:22:35, 1.48it/s] 0%| | 173/66000 [02:29<12:05:10, 1.51it/s] 0%| | 174/66000 [02:29<12:15:32, 1.49it/s] 0%| | 175/66000 [02:30<12:10:23, 1.50it/s] 0%| | 176/66000 [02:30<11:42:51, 1.56it/s] 0%| | 177/66000 [02:31<11:36:12, 1.58it/s] 0%| | 178/66000 [02:32<12:15:22, 1.49it/s] 0%| | 179/66000 [02:32<11:48:35, 1.55it/s] 0%| | 180/66000 [02:33<11:55:26, 1.53it/s] 0%| | 180/66000 [02:33<11:55:26, 1.53it/s] 0%| | 181/66000 [02:34<11:47:28, 1.55it/s] 0%| | 182/66000 [02:34<11:34:32, 1.58it/s] 0%| | 183/66000 [02:35<12:01:14, 1.52it/s] 0%| | 184/66000 [02:36<11:35:28, 1.58it/s] 0%| | 185/66000 [02:37<12:51:00, 1.42it/s] 0%| | 186/66000 [02:37<12:47:13, 1.43it/s] 0%| | 187/66000 [02:38<12:11:16, 1.50it/s] 0%| | 188/66000 [02:38<12:08:31, 1.51it/s] 0%| | 189/66000 [02:39<12:22:16, 1.48it/s] 0%| | 190/66000 [02:40<11:50:34, 1.54it/s] 0%| | 190/66000 [02:40<11:50:34, 1.54it/s] 0%| | 191/66000 [02:40<11:58:29, 1.53it/s] 0%| | 192/66000 [02:41<12:02:42, 1.52it/s] 0%| | 193/66000 [02:42<12:25:27, 1.47it/s] 0%| | 194/66000 [02:42<12:20:04, 1.48it/s] 0%| | 195/66000 [02:43<12:27:58, 1.47it/s] 0%| | 196/66000 [02:44<12:45:02, 1.43it/s] 0%| | 197/66000 [02:45<12:43:13, 1.44it/s] 0%| | 198/66000 [02:45<12:03:17, 1.52it/s] 0%| | 199/66000 [02:46<11:53:01, 1.54it/s] 0%| | 200/66000 [02:46<11:54:42, 1.53it/s] 0%| | 200/66000 [02:46<11:54:42, 1.53it/s]
+0%| | 0/42 [00:00<?, ?it/s][A
+5%|▍ | 2/42 [00:00<00:15, 2.63it/s][A
+7%|▋ | 3/42 [00:01<00:20, 1.93it/s][A
+10%|▉ | 4/42 [00:02<00:23, 1.61it/s][A
+12%|█▏ | 5/42 [00:03<00:26, 1.41it/s][A
+14%|█▍ | 6/42 [00:03<00:23, 1.53it/s][A
+17%|█▋ | 7/42 [00:04<00:24, 1.42it/s][A
+19%|█▉ | 8/42 [00:05<00:27, 1.25it/s][A
+21%|██▏ | 9/42 [00:06<00:24, 1.34it/s][A
+24%|██▍ | 10/42 [00:06<00:23, 1.34it/s][A
+26%|██▌ | 11/42 [00:07<00:22, 1.38it/s][A
+29%|██▊ | 12/42 [00:08<00:21, 1.37it/s][A
+31%|███ | 13/42 [00:09<00:23, 1.25it/s][A
+33%|███▎ | 14/42 [00:09<00:20, 1.38it/s][A
+36%|███▌ | 15/42 [00:10<00:21, 1.25it/s][A
+38%|███▊ | 16/42 [00:11<00:21, 1.22it/s][A
+40%|████ | 17/42 [00:12<00:18, 1.33it/s][A
+43%|████▎ | 18/42 [00:13<00:18, 1.28it/s][A
+45%|████▌ | 19/42 [00:13<00:17, 1.32it/s][A
+48%|████▊ | 20/42 [00:14<00:15, 1.46it/s][A
+50%|█████ | 21/42 [00:15<00:15, 1.34it/s][A
+52%|█████▏ | 22/42 [00:16<00:15, 1.30it/s][A
+55%|█████▍ | 23/42 [00:16<00:14, 1.29it/s][A
+57%|█████▋ | 24/42 [00:17<00:13, 1.35it/s][A
+60%|█████▉ | 25/42 [00:18<00:12, 1.39it/s][A
+62%|██████▏ | 26/42 [00:18<00:11, 1.40it/s][A
+64%|██████▍ | 27/42 [00:19<00:10, 1.42it/s][A
+67%|██████▋ | 28/42 [00:20<00:11, 1.25it/s][A
+69%|██████▉ | 29/42 [00:21<00:10, 1.23it/s][A
+71%|███████▏ | 30/42 [00:22<00:09, 1.27it/s][A
+74%|███████▍ | 31/42 [00:22<00:08, 1.30it/s][A
+76%|███████▌ | 32/42 [00:23<00:07, 1.27it/s][A
+79%|███████▊ | 33/42 [00:24<00:06, 1.32it/s][A
+81%|████████ | 34/42 [00:25<00:05, 1.36it/s][A
+83%|████████▎ | 35/42 [00:25<00:05, 1.35it/s][A
+86%|████████▌ | 36/42 [00:26<00:04, 1.28it/s][A
+88%|████████▊ | 37/42 [00:27<00:03, 1.34it/s][A
+90%|█████████ | 38/42 [00:28<00:02, 1.34it/s][A
+93%|█████████▎| 39/42 [00:28<00:02, 1.29it/s][A
+95%|█████████▌| 40/42 [00:30<00:01, 1.12it/s][A
+98%|█████████▊| 41/42 [00:30<00:00, 1.24it/s][A
+100%|██████████| 42/42 [00:30<00:00, 1.59it/s][A
+{'eval_loss': 5.628602504730225, 'eval_runtime': 32.0745, 'eval_samples_per_second': 82.371, 'eval_steps_per_second': 1.309, 'epoch': 0.61}
+[A 0%| | 200/66000 [03:19<11:54:42, 1.53it/s]
+100%|██████████| 42/42 [00:30<00:00, 1.59it/s][A
+[ACheckpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-200 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-200 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-200 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-200 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-200 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-200 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-200 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+Checkpoint destination directory /mnt/nfs/prefactor/vlm/model/checkpoint-200 already exists and is non-empty. Saving will proceed but saved results may be invalid.
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4631: UserWarning: No device id is provided via `init_process_group` or `barrier `. Using the current device set by the user.
+warnings.warn( # warn only once
+{'train_runtime': 199.8899, 'train_samples_per_second': 10574.82, 'train_steps_per_second': 330.182, 'train_loss': 1.1434031820297241, 'epoch': 0.61}
+✅ 訓練完成！模型已儲存至：/mnt/nfs/prefactor/vlm/model✅ 訓練完成！模型已儲存至：/mnt/nfs/prefactor/vlm/model
+✅ 訓練完成！模型已儲存至：/mnt/nfs/prefactor/vlm/model
+✅ 訓練完成！模型已儲存至：/mnt/nfs/prefactor/vlm/model
+✅ 訓練完成！模型已儲存至：/mnt/nfs/prefactor/vlm/model
+0%| | 200/66000 [03:19<11:54:42, 1.53it/s] 0%| | 200/66000 [03:19<18:14:55, 1.00it/s]
+✅ 訓練完成！模型已儲存至：/mnt/nfs/prefactor/vlm/model
+✅ 訓練完成！模型已儲存至：/mnt/nfs/prefactor/vlm/model✅ 訓練完成！模型已儲存至：/mnt/nfs/prefactor/vlm/model
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+[rank0]:[W330 08:16:50.299309750 ProcessGroupNCCL.cpp:1479] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

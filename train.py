@@ -23,6 +23,7 @@ from PIL import Image
 from torch.utils.data import Dataset
 from transformers import AutoProcessor, AutoModelForCausalLM, TrainingArguments, Trainer
 from peft import LoraConfig, get_peft_model
+from transformers import EarlyStoppingCallback
 
 # ==========================================
 # 1. 簡化版 Dataset (只負責讀資料，不負責轉換)
@@ -75,9 +76,9 @@ def get_collate_fn(processor):
 # ==========================================
 def main():
     model_id = "microsoft/Florence-2-base-ft"
-    train_file = "/workspace/grounding_train.jsonl" 
-    val_file = "/workspace/grounding_val.jsonl"     
-    output_dir = "./florence2-custom-model"
+    train_file = "/mnt/nfs/prefactor/vlm/labels/master_grounding_train.jsonl" 
+    val_file = "/mnt/nfs/prefactor/vlm/labels/master_grounding_val.jsonl"     
+    output_dir = "/mnt/nfs/prefactor/vlm/model"
 
     print("⏳ 正在載入 Processor 與 基礎模型...")
     processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
@@ -107,18 +108,21 @@ def main():
 
     training_args = TrainingArguments(
         output_dir=output_dir,
-        num_train_epochs=5,              
-        per_device_train_batch_size=2,   # 若記憶體不足，請改為 1
-        per_device_eval_batch_size=2,
+        num_train_epochs=200,             # 可以大膽設高一點，例如 20
+        evaluation_strategy="steps",     # 確保有定期評估 (你已經有這行)
+        eval_steps=100,                   # 每 50 步評估一次
+        save_strategy="steps",           # 確保有定期存檔 (必須與 evaluation_strategy 一致)
+        save_steps=100,                   
+        load_best_model_at_end=True,     # 訓練結束時，自動載入表現最好的模型
+        metric_for_best_model="eval_loss", # 根據驗證集的 Loss 來評估好壞
+        greater_is_better=False,          # Loss 越小越好，所以設為 False        
+        per_device_train_batch_size=1,   # 若記憶體不足，請改為 1
         gradient_accumulation_steps=4,   
-        learning_rate=5e-4,              
-        evaluation_strategy="steps",
-        eval_steps=50,                   
-        save_strategy="steps",
-        save_steps=50,
+        learning_rate=5e-4,                              
         logging_steps=10,                
         fp16=True,                       
         optim="adamw_torch",
+        ddp_find_unused_parameters=False,
         remove_unused_columns=False      
     )
 
@@ -127,15 +131,17 @@ def main():
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
-        data_collator=get_collate_fn(processor) # 掛載我們寫好的動態打包器
+        data_collator=get_collate_fn(processor), # 掛載我們寫好的動態打包器
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)]
     )
 
     print("🚀 開始煉丹！(開始訓練...)")
     trainer.train()
 
-    print(f"✅ 訓練完成！模型已儲存至：{output_dir}")
-    model.save_pretrained(output_dir)
-    processor.save_pretrained(output_dir)
+    if trainer.is_world_process_zero():
+        print(f"✅ 訓練完成！模型已儲存至：{output_dir}")
+        model.save_pretrained(output_dir)
+        processor.save_pretrained(output_dir)
 
 if __name__ == "__main__":
     main()

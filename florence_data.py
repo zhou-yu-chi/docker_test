@@ -76,8 +76,8 @@ def extract_data_from_project(yolo_images_dir, yolo_labels_dir, descriptive_clas
 if __name__ == "__main__":
     
     # 輸出的訓練集與驗證集路徑
-    train_file = "/workspace/master_grounding_train.jsonl"
-    val_file = "/workspace/master_grounding_val.jsonl"
+    train_file = "/mnt/nfs/data/master_grounding_train.jsonl"
+    val_file = "/mnt/nfs/data/master_grounding_val.jsonl"
     
     # 設定驗證集的比例 (0.2 代表 20% 驗證集，80% 訓練集)
     val_ratio = 0.2 
@@ -85,46 +85,64 @@ if __name__ == "__main__":
     projects = [
         {
             "name": "大塚100製藥_點滴",
-            "images_dir": "/dataset/S25036-大塚製藥視覺排除疊包模組/100ml saline yolov8/train/images",
-            "labels_dir": "/dataset/S25036-大塚製藥視覺排除疊包模組/100ml saline yolov8/train/labels",
+            "images_dir": "/prefactor/data/data_1/100ml_saline/images",
+            "labels_dir": "/prefactor/data/data_1/100ml_saline/labels",
             "classes": ["Overlapping 100ml saline bags", "Single 100ml saline bag"] 
         },
         {
             "name": "大塚250製藥_點滴",
-            "images_dir": "/dataset/S25036-大塚製藥視覺排除疊包模組/250 ml saline yolov8/train/images",
-            "labels_dir": "/dataset/S25036-大塚製藥視覺排除疊包模組/250 ml saline yolov8/train/labels",
-            "classes": ["Overlapping 250 ml saline bags", "Single 250 ml saline bag"] 
+            "images_dir": "/prefactor/data/250 ml saline yolov8/train/images",
+            "labels_dir": "/prefactor/data/250 ml saline yolov8/train/labels",
+            "classes": ["Overlapping 250ml saline bags", "Single 250ml saline bag"] 
         },
         {
             "name": "大塚500製藥_點滴",
-            "images_dir": "/dataset/S25036-大塚製藥視覺排除疊包模組/500ml saline yolov8/train/images",
-            "labels_dir": "/dataset/S25036-大塚製藥視覺排除疊包模組/500ml saline yolov8/train/labels",
+            "images_dir": "/prefactor/data/500ml_saline_yolov8/500ml saline yolov8/train/images",
+            "labels_dir": "/prefactor/data/500ml_saline_yolov8/500ml saline yolov8/train/labels",
             "classes": ["Overlapping 500ml saline bags", "Single 500ml saline bag"] 
         },
         {
              "name": "筆",
-             "images_dir": "/dataset/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/aetina_pen/images/train",
-             "labels_dir": "/dataset/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/aetina_pen/labels/train",
-             "classes": ["white pen"] 
+             "images_dir": "/prefactor/data/data_1/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/aetina_pen/images/train",
+             "labels_dir": "/prefactor/data/data_1/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/aetina_pen/labels/train",
+             "classes": ["gray pen"] 
         },
         {
              "name": "咖啡豆",
-             "images_dir": "/dataset/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/coffeebeans/images/train",
-             "labels_dir": "/dataset/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/coffeebeans/labels/train",
+             "images_dir": "/prefactor/data/data_1/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/coffeebeans/images/train",
+             "labels_dir": "/prefactor/data/data_1/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/2025-Computex展-PCB檢測 & 餅乾檢測 & 筆角度 & 咖啡豆正反面/coffeebeans/labels/train",
              "classes": ["good coffee beans","Broken coffee beans"] 
         },
         {
-             "name": "飲料與食物",
-             "images_dir": "/dataset/2025-自動化展-茂倫配餐系統/drinks_food/train/images",
-             "labels_dir": "/dataset/2025-自動化展-茂倫配餐系統/drinks_food/train/labels",
-             "classes": ["Hamburger toys","Calpis foil bags","Sprite cans","bitter melon","broccoli toys","carrot toys","corn toys","French fry toys","omelet toys","lemon toys","lime toys","rice toys","water bottles"] 
-        },
-        {
              "name": "北捐",
-             "images_dir": "/dataset/S25065-台北捐血中心保存檢體裝盒輔助自動作業設備/train/images",
-             "labels_dir": "/dataset/S25065-台北捐血中心保存檢體裝盒輔助自動作業設備/train/labels",
+             "images_dir": "/prefactor/data/data_1/tp_blood/tp_blood/images",
+             "labels_dir": "/prefactor/data/data_1/tp_blood/tp_blood/labels",
              "classes": ["SST採血管"] 
         },
+        {
+             "name": "toolbox",
+             "images_dir": "/prefactor/data/toolbox/toolbox/images",
+             "labels_dir": "/prefactor/data/toolbox/toolbox/labels",
+             "classes": ["screw","plier","hammer","wrench","screwdriver"] 
+        },
+        {
+             "name": "虎門_牙孔",
+             "images_dir": "/prefactor/data/虎門_牙孔/虎門_牙孔/images",
+             "labels_dir": "/prefactor/data/虎門_牙孔/虎門_牙孔/labels",
+             "classes": ["Debris inside the threaded hole"] 
+        },
+        {
+             "name": "藥丸",
+             "images_dir": "/prefactor/data/藥丸/藥丸/images",
+             "labels_dir": "/prefactor/data/藥丸/藥丸/labels",
+             "classes": ["Paran_Front","Paran_Back","Acetal_Front","Acetal_Back","Piant_Front","Piant_Back","Panadol_Front","Panadol_Back","Splotin_Front","Splotin_Back","Somin_Front","Somin_Back","Mopride_Front","Mopride_Back","Mysozyme_Front","Mysozyme_Back","Weisufu_Front","Weisufu_Back","Biofermin_Front","Biofermin_Back","Prednisolone_Front","Prednisolone_Back_085516","Perofen","Troches_Front","Troches_Back","Amoxicillin_Cap","Amoxicillin_Synmosa","Unfradine","Sulpiho","Yonice_Collagen","Undiarrhea","Anpin","Lopedin"]
+        },
+        {
+             "name": "束聯_金屬刮傷",
+             "images_dir": "/prefactor/data/束聯/束聯/images",
+             "labels_dir": "/prefactor/data/束聯/束聯/labels",
+             "classes": ["Metal_Scratch"]
+        }
     ]
 
     # 用來裝所有專案合併後的大清單
